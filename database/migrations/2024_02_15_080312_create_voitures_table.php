@@ -30,6 +30,7 @@ return new class extends Migration
             $table->boolean('decapotable');
             $table->boolean('utilitaire');
             $table->boolean('dispo');
+            $table->string('lieu_dispo');
             $table->timestamps();
         });
     }

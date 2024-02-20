@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LocationVoitureController;
+use App\Http\Controllers\DispoVoitureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/location/create', [LocationVoitureController::class, 'creationRental'])->name('location.create');
-
+Route::post('/voiture/create', [DispoVoitureController::class, 'creationVoiture'])->name('voiture.create');
+Route::get('/voitures', [DispoVoitureController::class, 'index']);
+Route::get('/voitures/show', [DispoVoitureController::class, 'showVoiture']);
