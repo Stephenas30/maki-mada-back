@@ -19,6 +19,44 @@ class DispoVoitureController extends Controller
     public function creationVoiture(Request $request)
     {
         //dd($request->all());
+        // Changement des données 
+        $dispo = $request->input('dispo');
+        $clim = $request->input('clim');
+        $gps = $request->input('gps');
+        $rehausseur = $request->input('rehausseur');
+        $decapotable = $request->input('decapotable');
+        $utilitaire = $request->input('utilitaire');
+
+        if ($dispo === "ON") {
+            $dispo = 1;
+        } else {
+            $dispo = 0;
+        }
+        if ($clim === "ON") {
+            $clim = 1;
+        } else {
+            $clim = 0;
+        }
+        if ($gps === "ON") {
+            $gps = 1;
+        } else {
+            $gps = 0;
+        }
+        if ($rehausseur === "ON") {
+            $rehausseur = 1;
+        } else {
+            $rehausseur = 0;
+        }
+        if ($decapotable === "ON") {
+            $decapotable = 1;
+        } else {
+            $decapotable = 0;
+        }
+        if ($utilitaire === "ON") {
+            $utilitaire = 1;
+        } else {
+            $utilitaire = 0;
+        }
         // Validez les données de la requête si nécessaire
 
         $car = new Voiture();
@@ -31,20 +69,20 @@ class DispoVoitureController extends Controller
         $car->puissance = $request->input('puissance');
         $car->porte = $request->input('porte');
         $car->radio = $request->input('radio');
-        $car->dispo = $request->input('dispo');
-        $car->clim = $request->input('clim');
-        $car->gps = $request->input('gps');
-        $car->rehausseur = $request->input('rehausseur');
+        $car->dispo = $dispo;
+        $car->clim = $clim;
+        $car->gps = $gps;
+        $car->rehausseur = $rehausseur;
         $car->bebe = $request->input('bebe');
         $car->traction = $request->input('traction');
-        $car->decapotable = $request->input('decapotable');
-        $car->utilitaire = $request->input('utilitaire');
+        $car->decapotable = $decapotable;
+        $car->utilitaire = $utilitaire;
         $car->lieu_dispo = $request->input('lieu_dispo');
 
         $car->save();
 
         return response()->json(['message' => 'Location de voiture créée avec succès'], 200);
-        //return redirect()->route('cars.index');
+        //return redirect()->route('voiture.create');
     }
 
     public function showVoiture(Request $request)
