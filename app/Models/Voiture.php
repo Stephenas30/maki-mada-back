@@ -15,4 +15,9 @@ class Voiture extends Model
     {
         return $this->hasMany(Location::class);
     }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
 }

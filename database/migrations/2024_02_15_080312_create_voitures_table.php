@@ -31,6 +31,8 @@ return new class extends Migration
             $table->boolean('utilitaire');
             $table->boolean('dispo');
             $table->string('lieu_dispo');
+            $table->string('motorisation');
+            $table->string('symbole');
             $table->timestamps();
         });
     }
