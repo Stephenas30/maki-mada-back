@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id('location_id');
-            $table->foreignId('voiture_id')->constrained()->onDelete('cascade');
-            $table->foreignId('client_id')->constrained()->onDelete('cascade');
+            $table->foreignId('voiture_id')->constrained('voitures', 'voiture_id')->onDelete('cascade');
+            $table->foreignId('client_id')->constrained('clients', 'client_id')->onDelete('cascade');
             $table->datetime('date_depart');
             $table->datetime('date_retour');
             $table->string('lieu_depart');
